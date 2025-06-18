@@ -1,6 +1,7 @@
 import LoginForm from '../../../common/LoginForm/LoginForm';
 // import ImageInRight from '../ImageInRight/ImageInRight';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
+import LeftLoginPhoto from '../../../Images/LeftLoginPhoto.png';
 import './FormInLeft.css';
 import { useTranslation } from 'react-i18next';
 
@@ -16,7 +17,7 @@ function FormInLeft() {
             <div className="form-content-wrapper">
                 <div className="image-right-container">
                     <img
-                        src="Images/LeftLoginPhoto.png"
+                        src={LeftLoginPhoto}
                         alt=""
                         className="right-image"
                     />

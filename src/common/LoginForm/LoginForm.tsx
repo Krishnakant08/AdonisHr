@@ -1,7 +1,7 @@
 ﻿import './LoginForm.css';
-import logo from '../../../public/Images/logo.png';
+import logo from '../../../src/Images/logo.png';
 import { useTranslation } from 'react-i18next';
-import credentials from '../../../public/Credential/credential.json';
+import credentials from '../../../src/Credential/credential.json';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../store/userStore';
@@ -62,7 +62,7 @@ function LoginForm() {
 
             <form id="login-form" onSubmit={handleSubmit}>
                 <div className="form-group has-search-right">
-                    <label>{t('login.usernameLabel')}</label>
+                    <label>{t('login.usernameLabel')}</label> 
                     <a href="#" className="form-control-feedback">
                         <span className="bi bi-person user"></span>
                     </a>

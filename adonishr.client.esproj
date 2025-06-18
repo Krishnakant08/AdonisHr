@@ -17,7 +17,8 @@
     <TypeScriptConfiguration Remove="src\components\View\Leftbar\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="public\Credential\" />
+    <Folder Include="public\" />
+    <Folder Include="src\Credential\" />
     <Folder Include="src\assets\images\" />
     <Folder Include="src\common\Navbar\" />
     <Folder Include="src\common\Profile\" />
@@ -25,7 +26,6 @@
     <Folder Include="src\components\Checkout\" />
     <Folder Include="src\components\Reports\Rightbar\" />
     <Folder Include="src\components\View\Rightbar\" />
-    <Folder Include="src\config\" />
     <Folder Include="src\pages\Crewlist\" />
     <Folder Include="src\pages\Checkout\" />
     <Folder Include="src\store\" />

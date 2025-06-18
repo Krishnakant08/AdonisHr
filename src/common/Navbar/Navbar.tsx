@@ -1,6 +1,6 @@
 ﻿// Navbar.tsx
 import './Navbar.css';
-import logo from '../../../public/Images/image.png';
+import logo from '../../../src/Images/image.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Profile from '../Profile/Profile';
 import { useState } from 'react';
