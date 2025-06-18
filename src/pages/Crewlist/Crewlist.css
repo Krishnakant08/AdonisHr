@@ -1,0 +1,33 @@
+.Dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.TopNavbar {
+    height: 4rem; /* 64px */
+    flex-shrink: 0;
+    background-color: #0180F5;
+}
+
+.MainContent {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.Left {
+    width: 60px;
+    background-color: #FFFFFF;
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.Right {
+    flex: 1;
+    overflow: hidden; /* Contain scroll inside child */
+    display: flex;
+    flex-direction: column;
+}

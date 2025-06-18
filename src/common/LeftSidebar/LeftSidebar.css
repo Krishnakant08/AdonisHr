@@ -1,0 +1,45 @@
+.Sidebar {
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Added position: relative for tooltip positioning */
+.icon-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+    .icon-container::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #222;
+        color: #fff;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+.sidebar-icon {
+    font-size: 29px;
+    color: #333;
+}
+
+/* Active icon color */
+.icon-container.active-icon .sidebar-icon {
+    color: #0180F5;
+}

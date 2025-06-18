@@ -1,0 +1,56 @@
+{
+  "login": {
+    "highlightedText": "Gestion du personnel, planification et paie",
+    "description": "La solution RH complète. Automatisez votre entreprise et impliquez votre personnel via une plateforme RH tout-en-un.",
+    "label": "Français",
+    "options": [ "Anglais", "Francais" ],
+    "welcome": "Bon retour !",
+    "secureMessage": "Ceci est un système sécurisé. Vous devez fournir vos informations de connexion pour accéder à votre compte Adonis Personal Manager.",
+    "usernameLabel": "Nom d'utilisateur",
+    "usernamePlaceholder": "Nom d'utilisateur/Email/Numéro de téléphone",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "********",
+    "forgotPassword": "Mot de passe oublié ?",
+    "mfaLabel": "Authentification multifacteur",
+    "mfaPlaceholder": "M X 0 0 0 0",
+    "requestCode": "Demander le code",
+    "loginButton": "Connexion",
+    "changeMfaText": "Changer la méthode MFA",
+    "changeMfaLink": "Cliquez ici pour changer",
+    "emailIncorrect": "L'email est incorrect",
+    "passwordIncorrect": "Le mot de passe est incorrect",
+    "emailRequired": "L'email est requis",
+    "passwordRequired": "Le mot de passe est requis"
+  },
+  "crewForm": {
+    "addUserTitle": "Ajouter un utilisateur",
+    "editUserTitle": "Modifier l'utilisateur",
+    "cancelButton": "Annuler",
+    "saveButton": "Enregistrer",
+    "closeButtonLabel": "Fermer",
+    "placeholderPrefix": "Saisir",
+    "requiredSymbol": "*",
+    "NothingIsSelected": "Aucune sélection",
+    "deleteConfirmationMessage": "Êtes-vous sûr de vouloir supprimer {count} élément(s) ?",
+    "breadcrumb": "Tableau de bord > Module >",
+    "employmentState": "État de l'emploi (TOUS)",
+    "openButton": "Ouvrir",
+    "deleteButton": "Supprimer",
+    "searchPlaceholder": "Rechercher un membre d’équipage",
+    "addCrewButton": "+ Ajouter un membre"
+  },
+  "leftSidebar": {
+    "modules": {
+      "crewlist": "Liste de l’équipage",
+      "report": "Rapport",
+      "clock": "Horloge",
+      "section": "Section"
+    }
+  },
+  "Navbar": {
+    "Module": "Module",
+    "Datagroups": "Groupe",
+    "Reports": "Rapports",
+    "View": "Vue"
+  }
+}

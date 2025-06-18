@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.271090-alpha">
+  <PropertyGroup>
+    <StartupCommand>npm run dev</StartupCommand>
+    <JavaScriptTestRoot>src\</JavaScriptTestRoot>
+    <JavaScriptTestFramework>Jest</JavaScriptTestFramework>
+    <!-- Allows the build (or compile) script located on package.json to run on Build -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <!-- Folder where production build objects will be placed -->
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="src\components\Datagroups\Leftbar\**" />
+    <None Remove="src\components\Reports\Leftbar\**" />
+    <None Remove="src\components\View\Leftbar\**" />
+    <TypeScriptConfiguration Remove="src\components\Datagroups\Leftbar\**" />
+    <TypeScriptConfiguration Remove="src\components\Reports\Leftbar\**" />
+    <TypeScriptConfiguration Remove="src\components\View\Leftbar\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="public\Credential\" />
+    <Folder Include="src\assets\images\" />
+    <Folder Include="src\common\Navbar\" />
+    <Folder Include="src\common\Profile\" />
+    <Folder Include="src\components\Datagroups\Rightbar\" />
+    <Folder Include="src\components\Checkout\" />
+    <Folder Include="src\components\Reports\Rightbar\" />
+    <Folder Include="src\components\View\Rightbar\" />
+    <Folder Include="src\config\" />
+    <Folder Include="src\pages\Crewlist\" />
+    <Folder Include="src\pages\Checkout\" />
+    <Folder Include="src\store\" />
+  </ItemGroup>
+</Project>
