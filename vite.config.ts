@@ -7,12 +7,12 @@ import child_process from 'child_process'
 import { env } from 'process'
 
 const baseFolder = env.APPDATA
-    ? ${env.APPDATA}/ASP.NET/https
-    : ${env.HOME}/.aspnet/https
+    ? `${env.APPDATA}/ASP.NET/https`
+    : `${env.HOME}/.aspnet/https`
 
 const certificateName = 'adonishr.client'
-const certFilePath = path.join(baseFolder, ${certificateName}.pem)
-const keyFilePath = path.join(baseFolder, ${certificateName}.key)
+const certFilePath = path.join(baseFolder, `${certificateName}.pem`)
+const keyFilePath = path.join(baseFolder, `${certificateName}.key`)
 
 if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     const result = child_process.spawnSync('dotnet', [
@@ -31,7 +31,7 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
 }
 
 const target = env.ASPNETCORE_HTTPS_PORT
-    ? https://localhost:${env.ASPNETCORE_HTTPS_PORT}
+    ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}`
     : env.ASPNETCORE_URLS
         ? env.ASPNETCORE_URLS.split(';')[0]
         : 'https://localhost:7239'
