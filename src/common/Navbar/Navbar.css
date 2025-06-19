@@ -1,0 +1,203 @@
+
+
+.navbar {
+    color: white;
+    position: relative;
+    margin-left:5px;
+    display: flex;
+    align-items: center;
+    margin-top: -7px;
+}
+
+    .navbar img {
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+        margin-right: 200px;
+    }
+
+.nav-item {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+/* Nav items styling */
+.navbar-nav {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+    .nav-link:hover {
+        color: white;
+    }
+
+    .nav-link i {
+        margin-right: 8px;
+        font-size: 1.1rem;
+    }
+
+
+.navbar-toggler {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    border-radius: 6px;
+    display: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1001;
+    margin-left: auto;
+}
+
+
+.profile {
+    margin-left: auto;
+    position: relative;
+    z-index: 1001;
+}
+
+    .profile .dropdown-toggle {
+        background: none;
+        border: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+
+    .nav-item.active .nav-link {
+        height:4rem;
+        background: #1274CE;
+    }
+
+/* Mobile responsive styles - Completely redesigned */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+        flex-wrap: nowrap;
+        position: relative;
+        left: 0px;
+    }
+
+        .navbar img {
+            height: 36px;
+        }
+
+    .navbar-toggler {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        order: 2;
+    }
+
+    .nav-container {
+        padding: 0;
+        position: relative;
+    }
+
+    #dashnavbarNav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        background-color: white;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        padding-top: 80px;
+        display: block !important;
+    }
+
+        #dashnavbarNav.show {
+            transform: translateX(0);
+        }
+
+    .navbar-nav {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .nav-link {
+        color: #333;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+        .nav-link i {
+            color: #0180F5;
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+    .nav-item.active .nav-link {
+        background-color: #f5f5f5;
+        color: #0180F5;
+    }
+
+    .profile {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        order: 3;
+    }
+
+    /* Overlay when menu is open */
+    .navbar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+
+    #dashnavbarNav.show + .navbar-overlay {
+        display: block;
+    }
+}
+
+/* For smaller mobile screens */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0.75rem;
+    }
+    .navbar-toggler{
+        position:absolute;
+        left:30px;  
+    }
+    .navbar img {
+        height: 44px;
+        margin-right: 10px;
+    }
+
+    #dashnavbarNav {
+        width: 260px;
+    }
+
+    .nav-link {
+        padding: 0.9rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}

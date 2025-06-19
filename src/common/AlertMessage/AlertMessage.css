@@ -1,0 +1,170 @@
+/* AlertMessage.css */
+.alert-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 400px;
+    max-width: 90%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: fadeInScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.alert-icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.alert-icon-background {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .alert-icon-background i {
+        font-size: 20px;
+    }
+
+.alert-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6c757d;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+    .alert-close:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #495057;
+    }
+
+.alert-body {
+    padding: 24px 20px;
+}
+
+.alert-text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #212529;
+}
+
+.alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+    .alert-footer.confirm-actions {
+        justify-content: space-between;
+    }
+
+.alert-button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    min-width: 80px;
+    text-align: center;
+}
+
+    .alert-button.primary {
+        background-color: #0d6efd;
+        color: white;
+        border-color: #0d6efd;
+    }
+
+        .alert-button.primary:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+
+    .alert-button.secondary {
+        background-color: white;
+        color: #495057;
+        border-color: #dee2e6;
+    }
+
+        .alert-button.secondary:hover {
+            background-color: #f8f9fa;
+            border-color: #dee2e6;
+        }
+
+/* Type-specific styles */
+.alert-message.info .alert-icon-background {
+    background-color: #e7f5ff;
+    color: #1c7ed6;
+}
+
+.alert-message.success .alert-icon-background {
+    background-color: #ebfbee;
+    color: #2b8a3e;
+}
+
+.alert-message.warning .alert-icon-background {
+    background-color: #fff9db;
+    color: #e67700;
+}
+
+.alert-message.error .alert-icon-background {
+    background-color: #fff5f5;
+    color: #e03131;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Backdrop */
+.alert-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

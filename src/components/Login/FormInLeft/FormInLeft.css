@@ -1,0 +1,131 @@
+.form-left-container{
+    display:flex;
+    justify-content:center;
+}
+
+.form-content-wrapper {
+    height: 982px;
+    width: 100%;
+    position: relative;
+}
+
+.image-right-container {
+    position: absolute;
+    width: 100%;
+    height: 982px;
+    top: 0;
+    overflow: hidden;
+}
+
+.right-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 30px;
+}
+
+.content-over-image {
+    padding: 30px;
+    border-radius: 12px;
+    background: rgba(255, 242, 242, 0.13);
+    backdrop-filter: blur(50px);
+    width: 100%;
+    max-width: 600px;
+}
+
+.highlighted-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: #0180F5;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.22;
+}
+
+.content-over-image p {
+    margin-top: 25px;
+    margin-bottom: 0;
+    color: white;
+    font-size: 20px;
+    line-height: 1.65;
+}
+
+/* Responsive - Tablets & Smaller */
+@media (max-width: 1024px) {
+    .image-right-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 20px;
+    }
+
+    .image-overlay {
+        padding: 20px;
+    }
+
+    .content-over-image {
+        padding: 20px;
+        max-width: 100%;
+        position: absolute;
+        bottom: 200px;
+        width: 70%;
+    }
+
+        .content-over-image p {
+            font-size: 16px;
+        }
+
+    .highlighted-text {
+        font-size: 13px;
+    }
+}
+
+/* Responsive - Mobile Phones */
+@media (max-width: 480px) {
+    .content-over-image {
+        padding: 16px;
+    }
+
+    .highlighted-text {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .content-over-image p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-left-container {
+        width: 100%;
+        padding: 20px;
+    }
+}
+@media (max-width: 1024px) {
+    .form-left-container {
+        display: block;
+    }
+    .form-content-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+}
+

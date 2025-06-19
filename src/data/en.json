@@ -1,0 +1,57 @@
+{
+  "login": {
+    "highlightedText": "Workforce Management, Scheduling & Payroll",
+    "description": "The Complete Human Resource Solution. Automate your business and engage your people through an all-in-one HR platform.",
+    "label": "English",
+    "options": [ "English", "Francais" ],
+    "welcome": "Welcome Back!",
+    "secureMessage": "This is a secure system and you will need to provide your login details to access your Adonis Personal Manager account.",
+    "usernameLabel": "Username",
+    "usernamePlaceholder": "User Name/Email ID/Phone No",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "********",
+    "forgotPassword": "Forget Password?",
+    "mfaLabel": "Multi Factor Authentication",
+    "mfaPlaceholder": "M X 0 0 0 0",
+    "requestCode": "Request Code",
+    "loginButton": "Login",
+    "changeMfaText": "Change MFA Method",
+    "changeMfaLink": "Click Here To Change",
+    "emailIncorrect": "Email is incorrect",
+    "passwordIncorrect": "Password is incorrect",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required"
+  },
+  "crewForm": {
+    "addUserTitle": "Add User",
+    "editUserTitle": "Edit User",
+    "cancelButton": "Cancel",
+    "saveButton": "Save",
+    "closeButtonLabel": "Close",
+    "placeholderPrefix": "Enter",
+    "requiredSymbol": "*",
+    "NothingIsSelected": "Nothing is selected",
+    "deleteConfirmationMessage": "Are you sure you want to delete {count} item(s)?",
+    "breadcrumb": "Dashboard > Module >",
+    "employmentState": "Employment State (ALL)",
+    "openButton": "Open",
+    "deleteButton": "Delete",
+    "searchPlaceholder": "Search for crew",
+    "addCrewButton": "+ Add Crew"
+  },
+  "leftSidebar": {
+    "modules": {
+      "crewlist": "Crewlist",
+      "report": "Report",
+      "clock": "Clock",
+      "section": "Section"
+    }
+  },
+
+  "Navbar": {
+    "Module": "Module",
+    "Datagroups": "Datagroups",
+    "Reports": "Reports",
+    "View": "View"
+  }
+} 

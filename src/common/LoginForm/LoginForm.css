@@ -1,0 +1,228 @@
+.left-form {
+    padding: 100px 140px;
+    width: 100%;
+    height: 982px;
+    background-color: #F0F2F5;
+    gap: 40px;
+    padding-top:115px;
+
+}
+.error-text {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.welcome-heading {
+    margin-bottom: 0;
+    margin-top: 20px;
+    color: #28293D;
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    gap:20px;
+    font: Segoe UI;
+}
+
+.form-text {
+    margin-bottom: 0;
+    margin-top: 20px;
+    color: #28293D;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+#login-form {
+    margin-top: 40px;
+    width:512px;
+    height:351px;
+}
+
+    #login-form label {
+        margin-bottom: 5px;
+        color: #000000;
+        font-size: 14px;
+        line-height: 100%;
+        font:Segoe UI;
+        font-weight:4000;
+
+    }
+
+    #login-form input#inputEmail,
+    #login-form input#inputPassword {
+        color: #000000;
+        font-size: 16px;
+        width: 100%;
+        display: block;
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid #F2F2F5;
+        background: #FFFFFF;
+        box-shadow: 0px 0.5px 2px 0px rgba(96, 97, 112, 0.16), 0px 0px 1px 0px rgba(40, 41, 61, 0.08);
+    }
+
+    #login-form .form-group.password {
+        margin-top: 20px;
+    }
+img, svg {
+    height: 55.9px;
+    vertical-align: middle;
+    width: 209px;
+}
+/* MFA Container */
+.mfa-container {
+    width: 100%;
+    margin: 16px 0;
+}
+
+/* MFA Box */
+.mfa-box {
+    width: 512px;
+    height: 56px;
+    border-radius: 10px;
+    border: 1px solid #EBEBF0;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0.5px 2px rgba(96, 97, 112, 0.16), 0px 0px 1px rgba(40, 41, 61, 0.08);
+}
+
+.mfa-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding: 6px 16px 6px 9px;
+}
+
+/* Add this new input styling */
+.mfa-code-input {
+    height: 36px;
+    border: 1px solid #EBEBF0;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-size: 14px;
+    color: #28293D;
+    background-color: #F8F8FA;
+}
+
+    .mfa-code-input::placeholder {
+        color: #8F90A6;
+    }
+
+/* Request Code Button */
+.request-code-btn {
+    min-width:111px;
+    height: 36px;
+    border-radius: 8px;
+    font-size:14px;
+    font-weight:400;
+    line-height:20px;
+    background: #1080F5;
+    border: none;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+ 
+
+.forgot {
+    text-align: right;
+    margin-top: 20px;
+    color: #FF3B3B;
+    font-size: 16px;
+    font-weight: 600;   
+    letter-spacing: 0.1px;
+}
+
+.has-search-right {
+    position: relative;
+    width: 512px;
+}
+
+    .has-search-right .form-control {
+        padding-right: 2.375rem;
+    }
+
+    .has-search-right .form-control-feedback {
+        margin-right: 10px;
+        margin-top: 28px;
+        position: absolute;
+        right: 0;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.375rem;
+        text-align: center;
+    }
+
+a.form-control-feedback span {
+    color: #0180F5;
+    font-size: 22px;
+}
+
+#submit {
+    border: none;
+    border-radius: 8px;
+    background: #0180F5;
+    width: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 0.1px;
+    margin-top: 40px;
+    display: flex;
+    height: 60px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.mfa {
+    position:relative;
+    text-align: center;
+    padding-top:8%;
+}
+
+    .mfa span {
+        color: #28293D;
+        font-size: 16px;
+    }
+
+    .mfa a {
+        margin-left: 8px;
+        font-weight: 600;
+        color: #0180F5;
+        text-decoration-line: underline;
+    }
+
+#login-form input:focus {
+    outline: none;
+    box-shadow: none;
+}
+@media (max-width: 1024px) {
+    .left-form {
+        width: 100%;
+        height: 100%;
+        
+    }
+    .mfa{
+        margin-left:-90px;
+    }
+    .form-text{
+        width:520px;
+    }
+    .logo, .welcome-heading, .form-text, #login-form {
+        margin-left: 70px;
+    }
+}
