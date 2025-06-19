@@ -6,10 +6,11 @@ import path from 'path'
 import child_process from 'child_process'
 import { env } from 'process'
 
+// Check if running in CI (e.g., GitHub Actions)
 const isCI = process.env.CI === 'true'
 
-let httpsConfig: HttpsOptions | false = false;
-
+// Use `any` to avoid typing errors in CI/CD
+let httpsConfig: any = false
 
 if (!isCI) {
   const baseFolder = env.APPDATA
@@ -50,7 +51,7 @@ const target = env.ASPNETCORE_HTTPS_PORT
 
 export default defineConfig({
   plugins: [react()],
-  base: "./",
+  base: "./", // Important for Azure deployment!
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
