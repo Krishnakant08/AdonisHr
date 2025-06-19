@@ -8,8 +8,8 @@ import { env } from 'process'
 
 const isCI = process.env.CI === 'true'
 
-// Let TypeScript infer the type
-let httpsConfig = false
+// ✅ Correct union type here
+let httpsConfig: boolean | { key: Buffer; cert: Buffer } = false
 
 if (!isCI) {
   const baseFolder = env.APPDATA
@@ -58,7 +58,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    https: httpsConfig, // ✅ Let Vite handle type (false or object)
+    https: httpsConfig, // ✅ now correctly typed
     proxy: {
       '^/weatherforecast': {
         target,
