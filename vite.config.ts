@@ -8,7 +8,8 @@ import { env } from 'process'
 
 const isCI = process.env.CI === 'true'
 
-let httpsConfig = false
+let httpsConfig: HttpsOptions | false = false;
+
 
 if (!isCI) {
   const baseFolder = env.APPDATA
