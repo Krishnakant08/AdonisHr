@@ -38,7 +38,7 @@ const target = env.ASPNETCORE_HTTPS_PORT
 
 export default defineConfig({
     plugins: [react()],
-    base: "/",
+    base: "./",
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
