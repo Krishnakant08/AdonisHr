@@ -13,7 +13,7 @@ function Rightbar() {
     return (
         <div>
             <p>Dashboard {'>'} Module {'>'}</p>
-            <p>hello {message}</p>
+            <p>{message}</p>
         </div>
     );
 }
