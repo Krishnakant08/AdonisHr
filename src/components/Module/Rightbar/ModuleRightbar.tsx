@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 function Rightbar() {
     const [message, setMessage] = useState('Loading...');
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -13,22 +13,26 @@ function Rightbar() {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',
-                            // Add if your API requires authentication
-                            // 'Authorization': 'Bearer your-token'
                         },
-                        credentials: 'same-origin' // or 'include' if using cookies
+                        credentials: 'same-origin',
                     }
                 );
-                
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                
-                const data = await response.json(); // Change to .json() if API returns JSON
+
+                const data = await response.json();
                 setMessage(data);
-            } catch (error) {
+            } catch (error: unknown) {
                 console.error('Fetch error:', error);
-                setError(error.message);
+
+                if (error instanceof Error) {
+                    setError(error.message);
+                } else {
+                    setError('An unknown error occurred.');
+                }
+
                 setMessage('Failed to load data');
             }
         };
