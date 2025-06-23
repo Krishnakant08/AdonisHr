@@ -1,6 +1,9 @@
 function ReportsRightbar() {
-  return (
+    return (
+        <div className="Hello">
       <p>Dashboard {'>'} Report {'> '}</p>
+            <h6>Hello </h6>
+        </div>
   );
 }
 
