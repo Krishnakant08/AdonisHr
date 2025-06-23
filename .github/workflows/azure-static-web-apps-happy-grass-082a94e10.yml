@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          cd adonishr.client
+          
           npm install
           npm run build
 
