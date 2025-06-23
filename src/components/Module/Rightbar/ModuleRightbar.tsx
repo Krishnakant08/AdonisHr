@@ -23,7 +23,7 @@ function Rightbar() {
                 }
 
                 const data = await response.json();
-                setMessage(data);
+                setMessage(data.message); // ✅ FIXED HERE
             } catch (error: unknown) {
                 console.error('Fetch error:', error);
 
