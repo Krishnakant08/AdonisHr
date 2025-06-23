@@ -4,7 +4,7 @@ function Rightbar() {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        fetch('https://localhost:7092/api/Dashboard')
+        fetch('https://azuredemoapi-bge6hqc8baf6bae8.canadaeast-01.azurewebsites.net/api/Dashboard')
             .then(response => response.text())
             .then(data => setMessage(data))
             .catch(error => console.error('Error:', error));
