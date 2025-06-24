@@ -8,8 +8,8 @@ function Rightbar() {
         const fetchData = async () => {
             try {
                 const urls = [
-                    'https://azuredemoapi-bge6hqc8baf6bae8.canadaeast-01.azurewebsites.net/api/Dashboard',
-                    'https://adonisapi-age7c5ecbjf0bbff.chilecentral-01.azurewebsites.net/api/Home',
+                    'https://adonishrservers-apis.azure-api.net/dashboard/api/Dashboard',
+                    'https://adonishrservers-apis.azure-api.net/home/api/Home',
                 ];
 
                 const responses = await Promise.all(
@@ -18,8 +18,9 @@ function Rightbar() {
                             method: 'GET',
                             headers: {
                                 'Content-Type': 'application/json',
+                                // Uncomment this line if subscription key is required
+                                // 'Ocp-Apim-Subscription-Key': '<your-subscription-key>',
                             },
-                            credentials: 'same-origin',
                         })
                     )
                 );
@@ -30,7 +31,7 @@ function Rightbar() {
                 }
 
                 const data = await Promise.all(responses.map((res) => res.json()));
-                const extractedMessages = data.map((item) => item.message);
+                const extractedMessages = data.map((item) => item?.message ?? 'No message');
                 setMessages(extractedMessages);
             } catch (error: unknown) {
                 console.error('Fetch error:', error);
