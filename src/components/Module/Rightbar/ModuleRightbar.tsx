@@ -18,20 +18,19 @@ function Rightbar() {
                             method: 'GET',
                             headers: {
                                 'Content-Type': 'application/json',
-                                // Uncomment this line if subscription key is required
-                                // 'Ocp-Apim-Subscription-Key': '<your-subscription-key>',
                             },
+                            credentials: 'same-origin',
                         })
                     )
                 );
 
                 const errorResponse = responses.find((res) => !res.ok);
                 if (errorResponse) {
-                    throw new Error(`HTTP error! status: ${errorResponse.status}`);
+                    throw new Error(HTTP error! status: ${errorResponse.status});
                 }
 
                 const data = await Promise.all(responses.map((res) => res.json()));
-                const extractedMessages = data.map((item) => item?.message ?? 'No message');
+                const extractedMessages = data.map((item) => item.message);
                 setMessages(extractedMessages);
             } catch (error: unknown) {
                 console.error('Fetch error:', error);
