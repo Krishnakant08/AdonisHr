@@ -7,38 +7,49 @@ function Rightbar() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const urls = [
-                    'https://adonishrservers-apis.azure-api.net/dashboard/api/Dashboard',
-                    'https://adonishrservers-apis.azure-api.net/home/api/Home',
+                const apiEndpoints = [
+                    { 
+                        path: '/dashboard/api/Dashboard',
+                        name: 'Dashboard API'
+                    },
+                    { 
+                        path: '/home/api/Home',
+                        name: 'Home API'
+                    }
                 ];
 
                 const responses = await Promise.all(
-                    urls.map((url) =>
-                        fetch(url, {
+                    apiEndpoints.map(endpoint => 
+                        fetch(`https://adonishrservers-apis.azure-api.net${endpoint.path}`, {
                             method: 'GET',
                             headers: {
                                 'Content-Type': 'application/json',
                                 // Add if your API requires subscription key
                                 // 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
-                            },
-                            // Only include credentials if you need to send cookies
-                            // credentials: 'include'
+                            }
                         })
+                        .then(async res => {
+                            if (!res.ok) {
+                                const errorData = await res.json().catch(() => ({}));
+                                throw new Error(
+                                    `${endpoint.name} failed with status ${res.status}: ${errorData.message || 'No error details'}`
+                                );
+                            }
+                            return res.json();
+                        })
+                        .then(data => ({
+                            name: endpoint.name,
+                            message: data.message || 'No message found'
+                        }))
                     )
                 );
 
-                const errorResponse = responses.find((res) => !res.ok);
-                if (errorResponse) {
-                    throw new Error(`API request failed with status ${errorResponse.status}`);
-                }
-
-                const data = await Promise.all(responses.map((res) => res.json()));
-                const extractedMessages = data.map((item) => item.message || 'No message found');
-                setMessages(extractedMessages);
+                setMessages(responses.map(r => `${r.name}: ${r.message}`));
+                setError(null);
             } catch (error: unknown) {
                 console.error('Fetch error:', error);
                 setError(error instanceof Error ? error.message : 'An unknown error occurred');
-                setMessages(['Failed to load data']);
+                setMessages(['Failed to load API data']);
             }
         };
 
@@ -51,12 +62,7 @@ function Rightbar() {
             {error ? (
                 <p style={{ color: 'red' }}>Error: {error}</p>
             ) : (
-                messages.map((msg, index) => (
-                    <p key={index}>
-                        {index === 0 ? 'Dashboard API: ' : 'Home API: '}
-                        {msg}
-                    </p>
-                ))
+                messages.map((msg, index) => <p key={index}>{msg}</p>)
             )}
         </div>
     );
