@@ -18,29 +18,26 @@ function Rightbar() {
                             method: 'GET',
                             headers: {
                                 'Content-Type': 'application/json',
+                                // Add if your API requires subscription key
+                                // 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
                             },
-                            credentials: 'same-origin',
+                            // Only include credentials if you need to send cookies
+                            // credentials: 'include'
                         })
                     )
                 );
 
                 const errorResponse = responses.find((res) => !res.ok);
                 if (errorResponse) {
-                    throw new Error(`HTTP error! status: ${errorResponse.status}`);
+                    throw new Error(`API request failed with status ${errorResponse.status}`);
                 }
 
                 const data = await Promise.all(responses.map((res) => res.json()));
-                const extractedMessages = data.map((item) => item.message);
+                const extractedMessages = data.map((item) => item.message || 'No message found');
                 setMessages(extractedMessages);
             } catch (error: unknown) {
                 console.error('Fetch error:', error);
-
-                if (error instanceof Error) {
-                    setError(error.message);
-                } else {
-                    setError('An unknown error occurred.');
-                }
-
+                setError(error instanceof Error ? error.message : 'An unknown error occurred');
                 setMessages(['Failed to load data']);
             }
         };
@@ -54,7 +51,12 @@ function Rightbar() {
             {error ? (
                 <p style={{ color: 'red' }}>Error: {error}</p>
             ) : (
-                messages.map((msg, index) => <p key={index}>{msg}</p>)
+                messages.map((msg, index) => (
+                    <p key={index}>
+                        {index === 0 ? 'Dashboard API: ' : 'Home API: '}
+                        {msg}
+                    </p>
+                ))
             )}
         </div>
     );
