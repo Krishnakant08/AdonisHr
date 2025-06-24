@@ -1,29 +1,37 @@
 import { useEffect, useState } from 'react';
 
 function Rightbar() {
-    const [message, setMessage] = useState('Loading...');
+    const [messages, setMessages] = useState<string[]>(['Loading...']);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(
+                const urls = [
                     'https://azuredemoapi-bge6hqc8baf6bae8.canadaeast-01.azurewebsites.net/api/Dashboard',
-                    {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        credentials: 'same-origin',
-                    }
+                    'https://adonisapi-age7c5ecbjf0bbff.chilecentral-01.azurewebsites.net/api/Home',
+                ];
+
+                const responses = await Promise.all(
+                    urls.map((url) =>
+                        fetch(url, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            credentials: 'same-origin',
+                        })
+                    )
                 );
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                const errorResponse = responses.find((res) => !res.ok);
+                if (errorResponse) {
+                    throw new Error(`HTTP error! status: ${errorResponse.status}`);
                 }
 
-                const data = await response.json();
-                setMessage(data.message); // ✅ FIXED HERE
+                const data = await Promise.all(responses.map((res) => res.json()));
+                const extractedMessages = data.map((item) => item.message);
+                setMessages(extractedMessages);
             } catch (error: unknown) {
                 console.error('Fetch error:', error);
 
@@ -33,7 +41,7 @@ function Rightbar() {
                     setError('An unknown error occurred.');
                 }
 
-                setMessage('Failed to load data');
+                setMessages(['Failed to load data']);
             }
         };
 
@@ -46,7 +54,7 @@ function Rightbar() {
             {error ? (
                 <p style={{ color: 'red' }}>Error: {error}</p>
             ) : (
-                <p>{message}</p>
+                messages.map((msg, index) => <p key={index}>{msg}</p>)
             )}
         </div>
     );
