@@ -26,7 +26,7 @@ function Rightbar() {
 
                 const errorResponse = responses.find((res) => !res.ok);
                 if (errorResponse) {
-                    throw new Error(HTTP error! status: ${errorResponse.status});
+                    throw new Error(`HTTP error! status: ${errorResponse.status}`);
                 }
 
                 const data = await Promise.all(responses.map((res) => res.json()));
