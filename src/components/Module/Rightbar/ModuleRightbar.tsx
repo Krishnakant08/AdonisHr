@@ -1,69 +1,87 @@
 import { useEffect, useState } from 'react';
 
 function Rightbar() {
-    const [messages, setMessages] = useState<string[]>(['Loading...']);
+    const [apiData, setApiData] = useState<{name: string, message: string}[]>([]);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchApiData = async () => {
             try {
-                const apiEndpoints = [
-                    { 
-                        path: '/dashboard/api/Dashboard',
-                        name: 'Dashboard API'
-                    },
-                    { 
-                        path: '/home/api/Home',
-                        name: 'Home API'
-                    }
+                const endpoints = [
+                    { name: 'Dashboard', url: '/dashboard/api/Dashboard' },
+                    { name: 'Home', url: '/home/api/Home' }
                 ];
 
-                const responses = await Promise.all(
-                    apiEndpoints.map(endpoint => 
-                        fetch(`https://adonishrservers-apis.azure-api.net${endpoint.path}`, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                // Add if your API requires subscription key
-                                // 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
+                const results = await Promise.all(
+                    endpoints.map(async (endpoint) => {
+                        try {
+                            const response = await fetch(
+                                `https://adonishrservers-apis.azure-api.net${endpoint.url}`,
+                                {
+                                    method: 'GET',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        // Add if needed:
+                                        // 'Ocp-Apim-Subscription-Key': 'your-key'
+                                    }
+                                }
+                            );
+
+                            if (!response.ok) {
+                                throw new Error(`${endpoint.name} API returned ${response.status}`);
                             }
-                        })
-                        .then(async res => {
-                            if (!res.ok) {
-                                const errorData = await res.json().catch(() => ({}));
-                                throw new Error(
-                                    `${endpoint.name} failed with status ${res.status}: ${errorData.message || 'No error details'}`
-                                );
-                            }
-                            return res.json();
-                        })
-                        .then(data => ({
-                            name: endpoint.name,
-                            message: data.message || 'No message found'
-                        }))
-                    )
+
+                            const data = await response.json();
+                            return {
+                                name: endpoint.name,
+                                message: data.message || 'No message'
+                            };
+                        } catch (err) {
+                            return {
+                                name: endpoint.name,
+                                message: `Error: ${err instanceof Error ? err.message : 'Unknown error'}`
+                            };
+                        }
+                    })
                 );
 
-                setMessages(responses.map(r => `${r.name}: ${r.message}`));
+                setApiData(results);
                 setError(null);
-            } catch (error: unknown) {
-                console.error('Fetch error:', error);
-                setError(error instanceof Error ? error.message : 'An unknown error occurred');
-                setMessages(['Failed to load API data']);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'Unknown error');
+            } finally {
+                setLoading(false);
             }
         };
 
-        fetchData();
+        fetchApiData();
     }, []);
 
     return (
         <div>
             <p>Dashboard {'>'} Module {'>'}</p>
-            {error ? (
-                <p style={{ color: 'red' }}>Error: {error}</p>
-            ) : (
-                messages.map((msg, index) => <p key={index}>{msg}</p>)
+            
+            {loading && <p>Loading API data...</p>}
+            
+            {error && (
+                <div style={{ color: 'red' }}>
+                    <p>Error: {error}</p>
+                    <p>Please check:</p>
+                    <ul>
+                        <li>API Management policy configuration</li>
+                        <li>Backend service availability</li>
+                        <li>Network connectivity</li>
+                    </ul>
+                </div>
             )}
+
+            {!loading && apiData.map((item, index) => (
+                <div key={index}>
+                    <h4>{item.name} API:</h4>
+                    <p>{item.message}</p>
+                </div>
+            ))}
         </div>
     );
 }
